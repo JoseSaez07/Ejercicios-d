@@ -29,9 +29,26 @@ public class RegistroTemperaturas {
     }
 
     public static int[] maximosPorFranja(int[][] m) {
-       int fila = m.length;
-       int columna = m.length;
-       int[] maximo = new int[]
+        int filas = m.length;
+        int columnas = m[0].length;
+
+        int[] maximos = new int[columnas];
+
+        // Inicializar con valores muy bajos
+        for (int j = 0; j < columnas; j++) {
+            maximos[j] = Integer.MIN_VALUE;
+        }
+
+        // Recorrer columnas (mañana, tarde, noche)
+        for (int j = 0; j < columnas; j++) {
+            for (int i = 0; i < filas; i++) {
+                if (m[i][j] > maximos[j]) {
+                    maximos[j] = m[i][j];
+                }
+            }
+        }
+
+        return maximos;
     }
 
     public static double[] mediasPorFranja(int[][] m) {

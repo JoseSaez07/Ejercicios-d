@@ -18,7 +18,7 @@ public class supersuspenso {
                     opcion = sc.nextInt();
                     break;
                 } catch (InputMismatchException e) {
-                    System.err.print("Error: necesitas poner un número no letra. ");
+                    System.out.print("Error: necesitas poner un número no letra. ");
                     sc.nextLine();
                 }
             }

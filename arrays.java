@@ -34,12 +34,12 @@ public class arrays {
         int filas = m.length;
         int columnas = m[0].length;
         double[] F = new double[columnas];
-       for (int i = 0; i < filas; i++) {
-        int suma = 0
-        for (int j = 0; j < columnas; j++) {
-            
+        for (int i = 0; i < filas; i++) {
+            int suma = 0;
+            for (int j = 0; j < columnas; j++) {
+
+            }
         }
-       }
     }
 
     public static double[] mediasPorFranja(int[][] m) {

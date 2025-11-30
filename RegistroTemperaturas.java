@@ -14,6 +14,29 @@ public class RegistroTemperaturas {
         return true;
     }
 
+    public static int[] conteoMayor20(int[][] m) {
+        int dias = m.length;
+        int[] conteo = new int[dias];
+
+        for (int i = 0; i < dias; i++) {
+            int c = 0;
+            for (int j = 0; j < m[i].length; j++) {
+                if (m[i][j] > 20) { // condición para contar
+                    c++;
+                }
+            }
+            conteo[i] = c; // guardamos el conteo por día
+        }
+
+        return conteo;
+    }
+
+    public static void mostrarConteo(int[] conteo) {
+        for (int i = 0; i < conteo.length; i++) {
+            System.out.println("Día " + (i + 1) + " tiene " + conteo[i] + " temperaturas > 20°C");
+        }
+    }
+
     public static double[] mediasDiarias(int[][] m) {
         int filas = m.length;
         int columnas = m[0].length;
@@ -31,28 +54,30 @@ public class RegistroTemperaturas {
     public static int[] maximosPorFranja(int[][] m) {
         int filas = m.length;
         int columnas = m[0].length;
-
-        int[] maximos = new int[columnas];
-
-        // Inicializar con valores muy bajos
-        for (int j = 0; j < columnas; j++) {
-            maximos[j] = Integer.MIN_VALUE;
-        }
-
-        // Recorrer columnas (mañana, tarde, noche)
-        for (int j = 0; j < columnas; j++) {
-            for (int i = 0; i < filas; i++) {
-                if (m[i][j] > maximos[j]) {
-                    maximos[j] = m[i][j];
+        int[] maximos = new int[filas];
+        for (int i = 0; i < filas; i++) {
+            maximos[i] = m[i][0];
+            for (int j = 0; j < columnas; j++) {
+                if (m[i][j] > maximos[i]) {
+                    maximos[i] = m[i][j];
                 }
             }
         }
-
         return maximos;
     }
 
     public static double[] mediasPorFranja(int[][] m) {
-        return new double[3];
+        int dias = m.length;
+        int frangas = m[0].length;
+        double[] media = new double[frangas];
+        for (int j = 0; j < frangas; j++) {
+            int suma = 0;
+            for (int i = 0; i < dias; i++) {
+                suma += m[i][j];
+            }
+            media[j] = (double) suma / dias;
+        }
+        return media;
     }
 
     public static void imprimirPorDia(int[][] m) {
